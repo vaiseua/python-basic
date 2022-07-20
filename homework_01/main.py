@@ -1,32 +1,36 @@
-"""
-Домашнее задание №1
-Функции и структуры данных
-"""
-
 
 
 def power_numbers(*numbers, power =2):
     return [number ** power for number in numbers]
-
-print(power_numbers(1, 2, 5, 7))
-
-
+#power_numbers(1, 2, 5, 7)
+#print(power_numbers(1, 2, 5, 7))
 
 
-# filter types
+def is_prime(number):
+    f=[]
+    for i in number:
+        if i==0 or i==1:
+            f.append(i)
+        for a in range(2, i):
+            if i % a == 0:
+                f.append(i)
+                break
+    return list(filter(lambda x: x not in f, number))
+
+
+#ODD = lambda x: x % 2 == 0
+#EVEN = lambda x: x % 2 != 0
+#PRIME = 1
+
+
 ODD = "odd"
 EVEN = "even"
 PRIME = "prime"
 
-
-def filter_numbers():
-    """
-    функция, которая на вход принимает список из целых чисел,
-    и возвращает только чётные/нечётные/простые числа
-    (выбор производится передачей дополнительного аргумента)
-
-    >>> filter_numbers([1, 2, 3], ODD)
-    <<< [1, 3]
-    >>> filter_numbers([2, 3, 4, 5], EVEN)
-    <<< [2, 4]
-    """
+def filter_numbers(number, filter_type):
+    if filter_type == PRIME:
+        return is_prime(number)
+    if filter_type == ODD:
+        return list(filter(lambda x: x % 2 != 0, number))
+    if filter_type == EVEN:
+        return list(filter(lambda x: x % 2 == 0, number))
