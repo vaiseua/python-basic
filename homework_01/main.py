@@ -7,7 +7,7 @@ def power_numbers(*numbers, power =2):
 
 
 def is_prime(number):
-    f=[]
+    f = []
     for i in number:
         if i==0 or i==1:
             f.append(i)
