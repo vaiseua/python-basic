@@ -7,13 +7,12 @@ def power_numbers(*numbers, power=2):
 
 
 def is_prime(number):
-    f = [0, 1]
-    for i in number:
-        for a in range(2, i):
-            if i % a == 0: #or i == 0 or i == 1:
-               f.append(i)
-               break
-    return list(filter(lambda x: x not in f, number))
+    if number == 0 or number == 1:
+        return False
+    for i in range(2, number):
+        if number % i == 0:
+            return False
+    return True
 
 
 #ODD = lambda x: x % 2 == 0
@@ -27,7 +26,7 @@ PRIME = "prime"
 
 def filter_numbers(number, filter_type):
     if filter_type == PRIME:
-        return is_prime(number)
+        return list(filter(is_prime, number))
     if filter_type == ODD:
         return list(filter(lambda x: x % 2 != 0, number))
     if filter_type == EVEN:
@@ -35,4 +34,6 @@ def filter_numbers(number, filter_type):
 
 
 print(filter_numbers([0, 1, 2, 3, 4, 5, 7, 11], PRIME))
+print(filter_numbers([0, 1, 2, 3, 4, 5, 7, 11], ODD))
+print(filter_numbers([0, 1, 2, 3, 4, 5, 7, 11], EVEN))
 
